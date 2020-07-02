@@ -1,7 +1,7 @@
 from abc import ABC, abstractclassmethod
 #нужно создать класс утка(с характерными методами) так, чтобы небыло ошибок если создастся утка, не использующая
 # те или иные методы
-# идея в том, что метод полета и крякания вынесены в отдельные абстрактные классы, от которых наследуется класс утка
+#1ая идея в том, что метод полета и крякания вынесены в отдельные абстрактные классы, от которых наследуется класс утка
 # (от которой наследуются виды и типы уток)
 # вопрос: как объявить метод, но не реализовать
 #
@@ -24,6 +24,8 @@ from abc import ABC, abstractclassmethod
 
 
 
+# другая в том, чтобы было две переменные, где хранятся значения от которых зависит будет ли ребенок использовать те или иные методы
+
 class Duck(ABC):#Flyable, Quackable):
 
     def __init__(self, flying=0, quacking=0):
@@ -37,20 +39,21 @@ class Duck(ABC):#Flyable, Quackable):
     def Quackable(self):
         if self.quacking == 1:
             print('it can quack')
-#нельзя создавать объекты, пока ОБА метода не переопределены
+            
 class MallardDuck(Duck):
     def __init__(self):
         Duck.__init__(self)
-#нельзя создавать объекты, пока ОБА метода не переопределены
+
 class REdHeadDuck(Duck):
     def __init__(self):
         Duck.__init__(self)
-#нельзя создавать объекты, пока ОБА метода не переопределены
-class RubberDuck(Duck):
+
+# у уток ниже не должна реализовываться часть методов 
+class RubberDuck(Duck): 
     def __init__(self):
         Duck.__init__(self)
         self.flying = 0
-#нельзя создавать объекты, пока ОБА метода не переопределены
+
 class DecoyDuck(Duck):
      def __init__(self, flying, quacking):
          Duck.__init__(self)
